@@ -22,6 +22,13 @@ Planning/bootstrap phase. The project is intentionally named `studio-art-gallery
 - Playwright for rendered routes and inquiry journeys
 - GitHub Pages for the initial preview deployment
 
+## Preview deployment
+
+The first preview target is GitHub Pages:
+
+- Planned URL: `https://ron-huberfeld.github.io/studio-art-gallery/`
+- Deployment source: GitHub Actions workflow `Deploy GitHub Pages`
+
 ## Planning docs
 
 - [`docs/PRD.md`](docs/PRD.md)

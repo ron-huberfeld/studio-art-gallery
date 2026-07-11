@@ -108,8 +108,9 @@ Goal: deploy a reviewed preview.
 
 Scope:
 
-- GitHub Actions workflow for build/test/E2E as practical.
-- GitHub Pages publishing configuration.
-- Preview URL handoff.
+- [x] GitHub Actions workflow for build/test/E2E as practical.
+- [x] GitHub Pages publishing workflow configuration.
+- [ ] Enable GitHub Pages Actions deployment after merge if repository settings require it.
+- [ ] Preview URL handoff.
 
 Ron reviews before merge or production promotion.
