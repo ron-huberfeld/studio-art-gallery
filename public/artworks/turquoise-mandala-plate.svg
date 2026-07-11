@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">Turquoise mandala plate placeholder</title>
+  <desc id="desc">Decorative placeholder for a handmade turquoise mandala plate.</desc>
+  <rect width="960" height="720" fill="#efe1cd"/>
+  <circle cx="480" cy="360" r="250" fill="#fdf8ed" stroke="#1d5958" stroke-width="18"/>
+  <circle cx="480" cy="360" r="170" fill="none" stroke="#c08a3c" stroke-width="12" stroke-dasharray="10 22"/>
+  <circle cx="480" cy="360" r="92" fill="#1d8a89" opacity="0.88"/>
+  <g fill="#ffffff">
+    <circle cx="480" cy="260" r="16"/>
+    <circle cx="480" cy="460" r="16"/>
+    <circle cx="380" cy="360" r="16"/>
+    <circle cx="580" cy="360" r="16"/>
+    <circle cx="409" cy="289" r="14"/>
+    <circle cx="551" cy="289" r="14"/>
+    <circle cx="409" cy="431" r="14"/>
+    <circle cx="551" cy="431" r="14"/>
+  </g>
+  <text x="480" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#5f3a1f">Artwork photo placeholder</text>
+</svg>

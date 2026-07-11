@@ -1,0 +1,126 @@
+---
+import { localeMeta, type Locale } from '../lib/i18n';
+
+interface Props {
+  title: string;
+  description?: string;
+  locale: Locale;
+}
+
+const { title, description = 'Atelier Gallery handmade art catalog', locale } = Astro.props;
+const meta = localeMeta[locale];
+---
+
+<!doctype html>
+<html lang={meta.htmlLang} dir={meta.dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    font-family: Inter, "Noto Sans Hebrew", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f9f3ea;
+    color: #24160f;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, rgba(196, 139, 73, 0.18), transparent 35rem),
+      linear-gradient(135deg, #fffaf3, #f4e4d0);
+  }
+
+  main {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+  }
+
+  a {
+    color: #6f3d1d;
+  }
+
+  .hero {
+    display: grid;
+    gap: 1rem;
+    padding: 3rem clamp(1.25rem, 5vw, 4rem);
+    border: 1px solid rgba(77, 45, 27, 0.18);
+    border-radius: 2rem;
+    background: rgba(255, 250, 243, 0.78);
+    box-shadow: 0 24px 80px rgba(75, 43, 23, 0.12);
+  }
+
+  .eyebrow {
+    color: #8b5a2b;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    line-height: 0.95;
+    margin: 0;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .card,
+  .detail-card {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(77, 45, 27, 0.16);
+    border-radius: 1.25rem;
+    padding: 1rem;
+    box-shadow: 0 14px 40px rgba(75, 43, 23, 0.08);
+  }
+
+  .card img,
+  .detail-card img {
+    width: 100%;
+    border-radius: 1rem;
+    background: #efe0cb;
+  }
+
+  .status {
+    display: inline-flex;
+    margin-top: 0.75rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: #ead0aa;
+    color: #563111;
+    font-weight: 700;
+  }
+
+  .cta {
+    display: inline-flex;
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 999px;
+    background: #24160f;
+    color: #fffaf3;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .language-switcher {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+</style>

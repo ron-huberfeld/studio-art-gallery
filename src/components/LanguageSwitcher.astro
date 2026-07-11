@@ -1,0 +1,18 @@
+---
+import { alternateLocale, localeMeta, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  slug?: string;
+}
+
+const { locale, slug } = Astro.props;
+const nextLocale = alternateLocale(locale);
+const route = slug ? `/${nextLocale}/artworks/${slug}/` : `/${nextLocale}/`;
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const href = `${base}${route.replace(/^\//, '')}`;
+---
+
+<nav class="language-switcher" aria-label="Language">
+  <a href={href}>{localeMeta[nextLocale].label}</a>
+</nav>
