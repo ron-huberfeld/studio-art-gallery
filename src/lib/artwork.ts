@@ -15,6 +15,12 @@ export type ArtworkCategory =
   | 'hanging-ornaments'
   | 'other';
 
+export interface ArtworkPrice {
+  amount: number;
+  currency: 'ILS';
+  showPublicly: boolean;
+}
+
 export interface Artwork {
   id: string;
   slug: string;
@@ -25,6 +31,7 @@ export interface Artwork {
   title: Partial<Record<Locale, string>>;
   description?: Partial<Record<Locale, string>>;
   colors?: string[];
+  price?: ArtworkPrice;
 }
 
 export interface ValidationResult {
@@ -89,6 +96,18 @@ export function getArtworkStatusLabel(artwork: Artwork, locale: Locale): string 
     : { available: 'Available', reserved: 'Reserved', sold: 'Sold', notForSale: 'Display only' };
 
   return labels[artwork.status];
+}
+
+export function getArtworkPriceLabel(artwork: Artwork, locale: Locale): string | undefined {
+  if (!artwork.price?.showPublicly) {
+    return undefined;
+  }
+
+  return new Intl.NumberFormat(locale === 'he' ? 'he-IL' : 'en-IL', {
+    style: 'currency',
+    currency: artwork.price.currency,
+    maximumFractionDigits: 0
+  }).format(artwork.price.amount);
 }
 
 export function getArtworkRoute(artwork: Artwork, locale: Locale): string {

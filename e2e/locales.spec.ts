@@ -11,6 +11,20 @@ test('Hebrew gallery is the default RTL experience', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'צלחת מנדלה טורקיז' })).toBeVisible();
 });
 
+test('Hebrew gallery shows the first real artwork and public shekel price', async ({ page }) => {
+  await page.goto('/studio-art-gallery/he/');
+
+  await expect(page.getByRole('link', { name: 'גיטרה מצופה פסיפס' })).toBeVisible();
+  await expect(page.getByText(/1,200/)).toBeVisible();
+  await page.getByRole('link', { name: 'גיטרה מצופה פסיפס' }).click();
+  await expect(page).toHaveURL('/studio-art-gallery/he/artworks/mosaic-covered-guitar/');
+  await expect(page.getByRole('heading', { name: 'גיטרה מצופה פסיפס' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'בירור לגבי היצירה' })).toHaveAttribute(
+    'href',
+    expect.stringContaining('%D7%92%D7%99%D7%98%D7%A8%D7%94%20%D7%9E%D7%A6%D7%95%D7%A4%D7%94%20%D7%A4%D7%A1%D7%99%D7%A4%D7%A1')
+  );
+});
+
 test('English gallery links to artwork detail with inquiry context', async ({ page }) => {
   await page.goto('/studio-art-gallery/en/');
 
