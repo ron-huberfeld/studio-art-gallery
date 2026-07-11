@@ -2,6 +2,28 @@ import type { Artwork } from '../lib/artwork';
 
 export const artworks: Artwork[] = [
   {
+    id: 'mosaic-covered-guitar',
+    slug: 'mosaic-covered-guitar',
+    category: 'other',
+    status: 'available',
+    purchaseMode: 'inquire',
+    images: ['/artworks/mosaic-covered-guitar.jpg'],
+    title: {
+      he: 'גיטרה מצופה פסיפס',
+      en: 'Mosaic-Covered Guitar'
+    },
+    description: {
+      he: 'גיטרה דקורטיבית מצופה פסיפס בעבודת יד, עם שילוב אריחים צבעוניים ודוגמאות פרחוניות. פרטים כמו מידות וחומרים יושלמו לאחר איסוף המידע מהאמנית.',
+      en: 'A decorative guitar covered with handmade mosaic work, combining colorful tiles and floral motifs. Details such as dimensions and materials will be completed after artist intake.'
+    },
+    colors: ['white', 'orange', 'blue', 'green', 'brown'],
+    price: {
+      amount: 1200,
+      currency: 'ILS',
+      showPublicly: true
+    }
+  },
+  {
     id: 'turquoise-mandala-plate',
     slug: 'turquoise-mandala-plate',
     category: 'decorative-plates',

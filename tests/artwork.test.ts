@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   getArtworkBySlug,
   getArtworkCta,
+  getArtworkPriceLabel,
   getArtworkStatusLabel,
   getArtworkRoute,
   listArtworks,
@@ -68,5 +69,18 @@ describe('artwork catalog model', () => {
     expect(getArtworkRoute(baseArtwork, 'he')).toBe('/he/artworks/sample-plate/');
     expect(getArtworkRoute(baseArtwork, 'en')).toBe('/en/artworks/sample-plate/');
     expect(getArtworkBySlug('turquoise-mandala-plate')?.title.he).toBe('צלחת מנדלה טורקיז');
+  });
+
+  it('publishes the first real artwork with a public shekel price', () => {
+    const guitar = getArtworkBySlug('mosaic-covered-guitar');
+
+    expect(guitar).toMatchObject({
+      title: { he: 'גיטרה מצופה פסיפס', en: 'Mosaic-Covered Guitar' },
+      status: 'available',
+      purchaseMode: 'inquire',
+      price: { amount: 1200, currency: 'ILS', showPublicly: true }
+    });
+    expect(getArtworkPriceLabel(guitar!, 'he')).toContain('1,200');
+    expect(getArtworkPriceLabel({ ...baseArtwork, price: { amount: 1200, currency: 'ILS', showPublicly: false } }, 'he')).toBeUndefined();
   });
 });

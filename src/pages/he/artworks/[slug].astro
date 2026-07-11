@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LanguageSwitcher from '../../../components/LanguageSwitcher.astro';
-import { getArtworkCta, getArtworkDescription, getArtworkStatusLabel, getArtworkTitle, listArtworks } from '../../../lib/artwork';
+import { getArtworkCta, getArtworkDescription, getArtworkPriceLabel, getArtworkStatusLabel, getArtworkTitle, listArtworks } from '../../../lib/artwork';
 import { createInquiryHref } from '../../../lib/inquiry';
 
 export function getStaticPaths() {
@@ -17,6 +17,7 @@ const href = createInquiryHref(title, locale);
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const imageSrc = `${base}${artwork.images[0].replace(/^\//, '')}`;
 const statusLabel = getArtworkStatusLabel(artwork, locale);
+const priceLabel = getArtworkPriceLabel(artwork, locale);
 ---
 
 <BaseLayout
@@ -32,6 +33,7 @@ const statusLabel = getArtworkStatusLabel(artwork, locale);
       <img src={imageSrc} alt={title} loading="eager" />
       <p class="status">{statusLabel}</p>
       <h1>{title}</h1>
+      {priceLabel && <p class="price">{priceLabel}</p>}
       {description && <p>{description}</p>}
       {cta.enabled && <a class="cta" href={href}>{cta.label}</a>}
     </article>
