@@ -24,11 +24,10 @@ Planning/bootstrap phase. The project is intentionally named `studio-art-gallery
 
 ## Preview deployment
 
-The first preview target is GitHub Pages once repository/account settings support it:
+The preview target is GitHub Pages:
 
-- Planned URL: `https://ron-huberfeld.github.io/studio-art-gallery/`
-- Deployment source: manual GitHub Actions workflow `Deploy GitHub Pages`
-- Current caveat: GitHub Pages is not available for this private repository under the current GitHub plan, so automatic deployment is disabled to keep `main` green.
+- URL: `https://ron-huberfeld.github.io/studio-art-gallery/`
+- Deployment source: GitHub Actions workflow `Deploy GitHub Pages`
 
 ## Planning docs
 

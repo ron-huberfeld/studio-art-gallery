@@ -111,7 +111,7 @@ Scope:
 - [x] GitHub Actions workflow for build/test/E2E as practical.
 - [x] GitHub Pages publishing workflow configuration.
 - [x] Disable automatic Pages deployment while the private repository/account plan does not support GitHub Pages.
-- [ ] Enable GitHub Pages Actions deployment if repository visibility/plan settings later support it.
-- [ ] Preview URL handoff.
+- [x] Enable GitHub Pages Actions deployment after repository visibility changed to public.
+- [x] Preview URL handoff: `https://ron-huberfeld.github.io/studio-art-gallery/`.
 
 Ron reviews before merge or production promotion.
