@@ -6,7 +6,7 @@
 - [x] Add PRD
 - [x] Add requirements checklist and decision log
 - [x] Add implementation plan
-- [ ] Create GitHub repository/remote after confirmation
+- [x] Create GitHub repository/remote after confirmation
 
 ## Phase 1 — Astro + Test Scaffold
 
@@ -27,11 +27,11 @@ Likely files:
 
 Acceptance criteria:
 
-- Astro TypeScript project exists.
-- Unit tests can run via `npm test`.
-- Static build can run via `npm run build`.
-- Playwright can verify Hebrew and English routes.
-- Verification runs in CI/sandbox before PR readiness.
+- [x] Astro TypeScript project exists.
+- [x] Unit tests can run via `npm test`.
+- [x] Static build can run via `npm run build`.
+- [x] Playwright can verify Hebrew and English routes.
+- [x] CI workflow added for unit, build, and Playwright gates.
 
 ## Phase 2 — Artwork Model and Business Rules
 

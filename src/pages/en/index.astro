@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArtworkCard from '../../components/ArtworkCard.astro';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import { listArtworks } from '../../lib/artwork';
+
+const locale = 'en';
+const artworks = listArtworks();
+---
+
+<BaseLayout title="Atelier Gallery" locale={locale} currentPath="/en/" alternatePath="/he/" description="A handmade art gallery and inquiry-first catalog">
+  <main>
+    <LanguageSwitcher locale={locale} />
+    <section class="hero">
+      <p class="eyebrow">Warm studio · boutique art</p>
+      <h1>Atelier Gallery</h1>
+      <p>A bilingual catalog for handmade artwork, with a personal inquiry path for each piece.</p>
+    </section>
+
+    <section class="gallery-grid" aria-label="Artworks">
+      {artworks.map((artwork) => <ArtworkCard artwork={artwork} locale={locale} />)}
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import type { Artwork } from '../lib/artwork';
+import { getArtworkCta, getArtworkRoute, getArtworkStatusLabel, getArtworkTitle } from '../lib/artwork';
+import type { Locale } from '../lib/i18n';
+
+interface Props {
+  artwork: Artwork;
+  locale: Locale;
+}
+
+const { artwork, locale } = Astro.props;
+const title = getArtworkTitle(artwork, locale);
+const cta = getArtworkCta(artwork, locale);
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const detailHref = `${base}${getArtworkRoute(artwork, locale).replace(/^\//, '')}`;
+const imageSrc = `${base}${artwork.images[0].replace(/^\//, '')}`;
+const statusLabel = getArtworkStatusLabel(artwork, locale);
+---
+
+<article class="card">
+  <img src={imageSrc} alt={title} loading="lazy" />
+  <p class="status">{statusLabel}</p>
+  <h2><a href={detailHref}>{title}</a></h2>
+  <p>{cta.label}</p>
+</article>
