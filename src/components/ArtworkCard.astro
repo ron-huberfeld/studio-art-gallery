@@ -1,6 +1,6 @@
 ---
 import type { Artwork } from '../lib/artwork';
-import { getArtworkCta, getArtworkRoute, getArtworkTitle } from '../lib/artwork';
+import { getArtworkCta, getArtworkRoute, getArtworkStatusLabel, getArtworkTitle } from '../lib/artwork';
 import type { Locale } from '../lib/i18n';
 
 interface Props {
@@ -14,9 +14,7 @@ const cta = getArtworkCta(artwork, locale);
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const detailHref = `${base}${getArtworkRoute(artwork, locale).replace(/^\//, '')}`;
 const imageSrc = `${base}${artwork.images[0].replace(/^\//, '')}`;
-const statusLabel = locale === 'he'
-  ? { available: 'זמין', reserved: 'שמור', sold: 'נמכר', notForSale: 'לתצוגה' }[artwork.status]
-  : { available: 'Available', reserved: 'Reserved', sold: 'Sold', notForSale: 'Display only' }[artwork.status];
+const statusLabel = getArtworkStatusLabel(artwork, locale);
 ---
 
 <article class="card">

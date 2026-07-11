@@ -3,7 +3,7 @@ import { localized } from './i18n';
 import { artworks } from '../data/artworks';
 
 export type ArtworkStatus = 'available' | 'reserved' | 'sold' | 'notForSale';
-export type PurchaseMode = 'inquire' | 'commission' | 'sold' | 'checkout';
+export type PurchaseMode = 'inquire' | 'commission' | 'sold';
 
 export type ArtworkCategory =
   | 'decorative-plates'
@@ -60,7 +60,7 @@ export function validateArtwork(artwork: Artwork): ValidationResult {
 }
 
 export function getArtworkCta(artwork: Artwork, locale: Locale): ArtworkCta {
-  if (artwork.status === 'sold' || artwork.purchaseMode === 'sold') {
+  if (artwork.status === 'sold') {
     return { label: locale === 'he' ? 'נמכר' : 'Sold', enabled: false };
   }
 
@@ -72,11 +72,23 @@ export function getArtworkCta(artwork: Artwork, locale: Locale): ArtworkCta {
     return { label: locale === 'he' ? 'לתצוגה בלבד' : 'Display only', enabled: false };
   }
 
+  if (artwork.purchaseMode === 'sold') {
+    return { label: locale === 'he' ? 'נמכר' : 'Sold', enabled: false };
+  }
+
   if (artwork.purchaseMode === 'commission') {
     return { label: locale === 'he' ? 'הזמנת יצירה דומה' : 'Commission a similar piece', enabled: true };
   }
 
   return { label: locale === 'he' ? 'בירור לגבי היצירה' : 'Inquire about this artwork', enabled: true };
+}
+
+export function getArtworkStatusLabel(artwork: Artwork, locale: Locale): string {
+  const labels = locale === 'he'
+    ? { available: 'זמין', reserved: 'שמור', sold: 'נמכר', notForSale: 'לתצוגה' }
+    : { available: 'Available', reserved: 'Reserved', sold: 'Sold', notForSale: 'Display only' };
+
+  return labels[artwork.status];
 }
 
 export function getArtworkRoute(artwork: Artwork, locale: Locale): string {

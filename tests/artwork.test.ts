@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   getArtworkBySlug,
   getArtworkCta,
+  getArtworkStatusLabel,
   getArtworkRoute,
   listArtworks,
   validateArtwork,
@@ -54,6 +55,13 @@ describe('artwork catalog model', () => {
 
     expect(getArtworkCta(soldArtwork, 'en')).toEqual({ label: 'Sold', enabled: false });
     expect(listArtworks()).toContainEqual(expect.objectContaining({ slug: 'turquoise-mandala-plate' }));
+  });
+
+  it('keeps artwork status authoritative when deriving CTAs and labels', () => {
+    const reservedArtwork: Artwork = { ...baseArtwork, status: 'reserved', purchaseMode: 'sold' };
+
+    expect(getArtworkCta(reservedArtwork, 'en')).toEqual({ label: 'Reserved — contact us', enabled: true });
+    expect(getArtworkStatusLabel(reservedArtwork, 'he')).toBe('שמור');
   });
 
   it('builds bilingual artwork routes with Hebrew as the default locale', () => {

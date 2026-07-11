@@ -4,7 +4,7 @@ export default defineConfig({
   testDir: './e2e',
   webServer: {
     command: 'npm run dev -- --host 127.0.0.1 --port 4327',
-    url: 'http://127.0.0.1:4327/he/',
+    url: 'http://127.0.0.1:4327/studio-art-gallery/he/',
     reuseExistingServer: false,
     timeout: 120_000
   },

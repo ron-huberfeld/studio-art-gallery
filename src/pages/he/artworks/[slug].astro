@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LanguageSwitcher from '../../../components/LanguageSwitcher.astro';
-import { getArtworkCta, getArtworkDescription, getArtworkTitle, listArtworks } from '../../../lib/artwork';
+import { getArtworkCta, getArtworkDescription, getArtworkStatusLabel, getArtworkTitle, listArtworks } from '../../../lib/artwork';
 import { createInquiryHref } from '../../../lib/inquiry';
 
 export function getStaticPaths() {
@@ -16,14 +16,21 @@ const cta = getArtworkCta(artwork, locale);
 const href = createInquiryHref(title, locale);
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const imageSrc = `${base}${artwork.images[0].replace(/^\//, '')}`;
+const statusLabel = getArtworkStatusLabel(artwork, locale);
 ---
 
-<BaseLayout title={`${title} · Atelier Gallery`} locale={locale} description={description || 'יצירה בעבודת יד'}>
+<BaseLayout
+  title={`${title} · Atelier Gallery`}
+  locale={locale}
+  currentPath={`/he/artworks/${artwork.slug}/`}
+  alternatePath={`/en/artworks/${artwork.slug}/`}
+  description={description || 'יצירה בעבודת יד'}
+>
   <main>
     <LanguageSwitcher locale={locale} slug={artwork.slug} />
     <article class="detail-card">
-      <img src={imageSrc} alt={title} />
-      <p class="status">{cta.label}</p>
+      <img src={imageSrc} alt={title} loading="eager" />
+      <p class="status">{statusLabel}</p>
       <h1>{title}</h1>
       {description && <p>{description}</p>}
       {cta.enabled && <a class="cta" href={href}>{cta.label}</a>}
