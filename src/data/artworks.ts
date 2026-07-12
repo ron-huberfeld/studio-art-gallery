@@ -24,6 +24,28 @@ export const artworks: Artwork[] = [
     }
   },
   {
+    id: 'decorated-dot-pan',
+    slug: 'decorated-dot-pan',
+    category: 'other',
+    status: 'available',
+    purchaseMode: 'inquire',
+    images: ['/artworks/decorated-dot-pan.jpg'],
+    title: {
+      he: 'מחבת מעוטרת בנקודות',
+      en: 'Decorated Dot Pan'
+    },
+    description: {
+      he: 'מחבת דקורטיבית בעבודת נקודות על רקע זהוב, עם דוגמה סימטרית בגווני טורקיז, ירוק כהה, לבן וחום. פרטים כמו מידות וחומרים יושלמו לאחר איסוף המידע מהאמנית.',
+      en: 'A decorative pan with dot-art ornamentation on a gold-toned background, featuring a symmetrical pattern in turquoise, deep green, white, and brown. Details such as dimensions and materials will be completed after artist intake.'
+    },
+    colors: ['gold', 'turquoise', 'green', 'white', 'brown'],
+    price: {
+      amount: 60,
+      currency: 'ILS',
+      showPublicly: true
+    }
+  },
+  {
     id: 'turquoise-mandala-plate',
     slug: 'turquoise-mandala-plate',
     category: 'decorative-plates',
