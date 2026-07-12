@@ -1,4 +1,6 @@
 ---
+import { siteTitle } from '../lib/i18n';
+
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const target = `${base}he/`;
 ---
@@ -9,11 +11,11 @@ const target = `${base}he/`;
     <meta charset="utf-8" />
     <meta http-equiv="refresh" content={`0; url=${target}`} />
     <link rel="canonical" href={target} />
-    <title>Atelier Gallery</title>
+    <title>{siteTitle}</title>
   </head>
   <body>
     <main>
-      <a href={target}>Atelier Gallery</a>
+      <a href={target}>{siteTitle}</a>
     </main>
   </body>
 </html>

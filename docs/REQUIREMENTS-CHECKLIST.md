@@ -3,7 +3,7 @@
 ## Locked Decisions
 
 - [x] Repository name: `studio-art-gallery`
-- [x] Initial site title: `Atelier Gallery`
+- [x] Site title: `בין נקודות לפסיפס`
 - [x] Keep project identifiers generic and reusable
 - [x] Do not use personal relationship terms in repo/site/filesystem identifiers
 - [x] Stack target: Astro + TypeScript
@@ -20,7 +20,7 @@
 
 - [ ] Contact email
 - [ ] WhatsApp number
-- [ ] Actual artist name/brand, if different from Atelier Gallery
+- [ ] Actual artist name/brand, if different from בין נקודות לפסיפס
 - [ ] Artist bio
 - [ ] Logo/signature asset
 - [ ] Initial 5–10 launch artworks
@@ -55,7 +55,7 @@
 | Date | Decision | Rationale |
 |---|---|---|
 | 2026-07-11 | Use `studio-art-gallery` as repo/project name | Generic and reusable; avoids relationship-specific naming |
-| 2026-07-11 | Use `Atelier Gallery` as temporary public title | Elegant placeholder until actual brand is known |
+| 2026-07-12 | Use `בין נקודות לפסיפס` as the public title | Ron requested the Hebrew brand title replace `Atelier Gallery` |
 | 2026-07-11 | Astro + TypeScript | Static, SEO-friendly bilingual catalog with light interactivity |
 | 2026-07-11 | Inquiry-first MVP | Better fit for one-of-a-kind handmade artwork than immediate checkout |
 | 2026-07-11 | GitHub Pages initial hosting | Fast public preview with low operational complexity |

@@ -1,10 +1,10 @@
-# Atelier Gallery
+# בין נקודות לפסיפס
 
 A generic, reusable bilingual art gallery/catalog site for handmade artwork.
 
 ## Current status
 
-Planning/bootstrap phase. The project is intentionally named `studio-art-gallery`; the public working title is **Atelier Gallery**.
+Planning/bootstrap phase. The project is intentionally named `studio-art-gallery`; the public title is **בין נקודות לפסיפס**.
 
 ## MVP direction
 

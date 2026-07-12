@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-`studio-art-gallery` is a generic, reusable bilingual art gallery/catalog site. The initial public title is **Atelier Gallery**.
+`studio-art-gallery` is a generic, reusable bilingual art gallery/catalog site. The public title is **בין נקודות לפסיפס**.
 
 ## Naming Rules
 
