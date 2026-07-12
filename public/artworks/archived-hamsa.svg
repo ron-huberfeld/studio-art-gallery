@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
-  <title id="title">Archived hamsa placeholder</title>
-  <desc id="desc">Decorative placeholder for a sold hamsa wall art piece.</desc>
-  <rect width="960" height="720" fill="#efe1cd"/>
-  <path d="M480 120c85 0 145 60 145 145v150h35c55 0 100 45 100 100s-45 100-100 100H300c-55 0-100-45-100-100s45-100 100-100h35V265c0-85 60-145 145-145z" fill="#fdf8ed" stroke="#204f7c" stroke-width="18"/>
-  <circle cx="480" cy="350" r="70" fill="none" stroke="#c08a3c" stroke-width="12"/>
-  <circle cx="480" cy="350" r="22" fill="#204f7c"/>
-  <text x="480" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#5f3a1f">Sold archive placeholder</text>
-</svg>

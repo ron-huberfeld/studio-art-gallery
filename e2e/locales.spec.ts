@@ -12,7 +12,10 @@ test('Hebrew gallery is the default RTL experience', async ({ page }) => {
   await expect(page.getByText('קטלוג דו־לשוני ליצירות אמנות בעבודת יד, עם מסלול בירור אישי לכל יצירה.')).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute('href', '/studio-art-gallery/en/');
   await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://ron-huberfeld.github.io/studio-art-gallery/en/');
-  await expect(page.getByRole('link', { name: 'צלחת מנדלה טורקיז' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'גיטרה מצופה פסיפס' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'מחבת מעוטרת בנקודות' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'צלחת מנדלה טורקיז' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'חמסה ארכיון' })).toHaveCount(0);
 });
 
 test('Hebrew gallery shows the first real artwork and public shekel price', async ({ page }) => {
@@ -47,17 +50,19 @@ test('Hebrew gallery shows decorated dot pan artwork and public shekel price', a
   );
 });
 
-test('English gallery links to artwork detail with inquiry context', async ({ page }) => {
+test('English gallery links to real artwork detail with inquiry context', async ({ page }) => {
   await page.goto('/studio-art-gallery/en/');
 
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.locator('html')).toHaveAttribute('dir', 'ltr');
-  await page.getByRole('link', { name: 'Turquoise Mandala Plate' }).click();
-  await expect(page).toHaveURL('/studio-art-gallery/en/artworks/turquoise-mandala-plate/');
-  await expect(page.getByRole('heading', { name: 'Turquoise Mandala Plate' })).toBeVisible();
-  await expect(page.locator('link[rel="alternate"][hreflang="he"]')).toHaveAttribute('href', 'https://ron-huberfeld.github.io/studio-art-gallery/he/artworks/turquoise-mandala-plate/');
+  await expect(page.getByRole('link', { name: 'Turquoise Mandala Plate' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Archived Hamsa' })).toHaveCount(0);
+  await page.getByRole('link', { name: 'Decorated Dot Pan' }).click();
+  await expect(page).toHaveURL('/studio-art-gallery/en/artworks/decorated-dot-pan/');
+  await expect(page.getByRole('heading', { name: 'Decorated Dot Pan' })).toBeVisible();
+  await expect(page.locator('link[rel="alternate"][hreflang="he"]')).toHaveAttribute('href', 'https://ron-huberfeld.github.io/studio-art-gallery/he/artworks/decorated-dot-pan/');
   await expect(page.getByRole('link', { name: 'Inquire about this artwork' })).toHaveAttribute(
     'href',
-    expect.stringContaining('subject=Artwork%20inquiry%3A%20Turquoise%20Mandala%20Plate')
+    expect.stringContaining('subject=Artwork%20inquiry%3A%20Decorated%20Dot%20Pan')
   );
 });
