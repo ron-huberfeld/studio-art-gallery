@@ -54,10 +54,10 @@ test('Hebrew gallery shows dot-painted hanging mirror artwork with size and publ
   await page.goto('/studio-art-gallery/he/');
 
   await expect(page.getByRole('link', { name: 'מראה לתליה מצויירת בנקודות' })).toBeVisible();
-  await expect(page.getByText(/50/)).toBeVisible();
   await page.getByRole('link', { name: 'מראה לתליה מצויירת בנקודות' }).click();
   await expect(page).toHaveURL('/studio-art-gallery/he/artworks/dot-painted-hanging-mirror/');
   await expect(page.getByRole('heading', { name: 'מראה לתליה מצויירת בנקודות' })).toBeVisible();
+  await expect(page.getByText(/50/)).toBeVisible();
   await expect(page.getByText(/25 ס״מ/)).toBeVisible();
   await expect(page.getByAltText('מראה לתליה מצויירת בנקודות')).toHaveAttribute(
     'src',
@@ -66,6 +66,24 @@ test('Hebrew gallery shows dot-painted hanging mirror artwork with size and publ
   await expect(page.getByRole('link', { name: 'בירור לגבי היצירה' })).toHaveAttribute(
     'href',
     expect.stringContaining('%D7%9E%D7%A8%D7%90%D7%94%20%D7%9C%D7%AA%D7%9C%D7%99%D7%94%20%D7%9E%D7%A6%D7%95%D7%99%D7%99%D7%A8%D7%AA%20%D7%91%D7%A0%D7%A7%D7%95%D7%93%D7%95%D7%AA')
+  );
+});
+
+test('Hebrew gallery shows floral tissue box artwork and public shekel price', async ({ page }) => {
+  await page.goto('/studio-art-gallery/he/');
+
+  await expect(page.getByRole('link', { name: 'קופסא לממחטות נייר פרחונית' })).toBeVisible();
+  await page.getByRole('link', { name: 'קופסא לממחטות נייר פרחונית' }).click();
+  await expect(page).toHaveURL('/studio-art-gallery/he/artworks/floral-tissue-box/');
+  await expect(page.getByRole('heading', { name: 'קופסא לממחטות נייר פרחונית' })).toBeVisible();
+  await expect(page.getByText(/50/)).toBeVisible();
+  await expect(page.getByAltText('קופסא לממחטות נייר פרחונית')).toHaveAttribute(
+    'src',
+    expect.stringContaining('/artworks/floral-tissue-box.jpg')
+  );
+  await expect(page.getByRole('link', { name: 'בירור לגבי היצירה' })).toHaveAttribute(
+    'href',
+    expect.stringContaining(encodeURIComponent('קופסא לממחטות נייר פרחונית'))
   );
 });
 

@@ -66,5 +66,27 @@ export const artworks: Artwork[] = [
       currency: 'ILS',
       showPublicly: true
     }
+  },
+  {
+    id: 'floral-tissue-box',
+    slug: 'floral-tissue-box',
+    category: 'boxes',
+    status: 'available',
+    purchaseMode: 'inquire',
+    images: ['/artworks/floral-tissue-box.jpg'],
+    title: {
+      he: 'קופסא לממחטות נייר פרחונית',
+      en: 'Floral Tissue Box'
+    },
+    description: {
+      he: 'קופסא לממחטות נייר פרחונית בעיטור נקודות על רקע כהה, עם פרחים בגווני טורקיז, כתום, לבן וחום.',
+      en: 'A floral tissue box decorated with dot-art patterns on a dark background, featuring turquoise, orange, white, and brown flower details.'
+    },
+    colors: ['black', 'turquoise', 'orange', 'white', 'brown'],
+    price: {
+      amount: 50,
+      currency: 'ILS',
+      showPublicly: true
+    }
   }
 ];
