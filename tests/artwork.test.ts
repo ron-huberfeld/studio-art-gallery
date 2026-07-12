@@ -61,7 +61,8 @@ describe('artwork catalog model', () => {
     expect(listArtworks().map((artwork) => artwork.slug)).toEqual([
       'mosaic-covered-guitar',
       'decorated-dot-pan',
-      'dot-painted-hanging-mirror'
+      'dot-painted-hanging-mirror',
+      'floral-tissue-box'
     ]);
     expect(getArtworkBySlug('turquoise-mandala-plate')).toBeUndefined();
     expect(getArtworkBySlug('archived-hamsa')).toBeUndefined();
@@ -106,5 +107,20 @@ describe('artwork catalog model', () => {
     });
     expect(mirror?.description?.he).toContain('25 ס״מ');
     expect(getArtworkPriceLabel(mirror!, 'he')).toContain('50');
+  });
+
+  it('publishes the floral tissue box with public shekel price', () => {
+    const tissueBox = getArtworkBySlug('floral-tissue-box');
+
+    expect(tissueBox).toMatchObject({
+      category: 'boxes',
+      title: { he: 'קופסא לממחטות נייר פרחונית', en: 'Floral Tissue Box' },
+      status: 'available',
+      purchaseMode: 'inquire',
+      images: ['/artworks/floral-tissue-box.jpg'],
+      price: { amount: 50, currency: 'ILS', showPublicly: true }
+    });
+    expect(tissueBox?.description?.he).toContain('פרחונית');
+    expect(getArtworkPriceLabel(tissueBox!, 'he')).toContain('50');
   });
 });
