@@ -3,18 +3,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArtworkCard from '../../components/ArtworkCard.astro';
 import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 import { listArtworks } from '../../lib/artwork';
+import { siteDescription, siteTitle } from '../../lib/i18n';
 
 const locale = 'he';
 const artworks = listArtworks();
 ---
 
-<BaseLayout title="Atelier Gallery" locale={locale} currentPath="/he/" alternatePath="/en/" description="גלריית אמנות בעבודת יד">
+<BaseLayout title={siteTitle} locale={locale} currentPath="/he/" alternatePath="/en/" description={siteDescription}>
   <main>
     <LanguageSwitcher locale={locale} />
     <section class="hero">
       <p class="eyebrow">גלריה חמה · בוטיק אמנות</p>
-      <h1>Atelier Gallery</h1>
-      <p>קטלוג דו־לשוני ליצירות אמנות בעבודת יד, עם מסלול בירור אישי לכל יצירה.</p>
+      <h1>{siteTitle}</h1>
+      <p>{siteDescription}</p>
     </section>
 
     <section class="gallery-grid" aria-label="יצירות">

@@ -1,4 +1,4 @@
-# Atelier Gallery PRD
+# בין נקודות לפסיפס PRD
 
 ## Problem
 
@@ -30,7 +30,7 @@ An artist needs a polished public web presence to display handmade artwork, comm
 ## Product Direction
 
 - Launch goal: balanced gallery/shop.
-- Public title: **Atelier Gallery**.
+- Public title: **בין נקודות לפסיפס**.
 - Initial artwork count: 5–10 items.
 - MVP commerce: inquiry-first.
 - Long-term commerce: hybrid checkout for selected smaller/reproducible items, while unique originals may remain inquiry/reserve.

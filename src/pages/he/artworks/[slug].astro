@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LanguageSwitcher from '../../../components/LanguageSwitcher.astro';
 import { getArtworkCta, getArtworkDescription, getArtworkPriceLabel, getArtworkStatusLabel, getArtworkTitle, listArtworks } from '../../../lib/artwork';
 import { createInquiryHref } from '../../../lib/inquiry';
+import { siteTitle } from '../../../lib/i18n';
 
 export function getStaticPaths() {
   return listArtworks().map((artwork) => ({ params: { slug: artwork.slug }, props: { artwork } }));
@@ -21,7 +22,7 @@ const priceLabel = getArtworkPriceLabel(artwork, locale);
 ---
 
 <BaseLayout
-  title={`${title} · Atelier Gallery`}
+  title={`${title} · ${siteTitle}`}
   locale={locale}
   currentPath={`/he/artworks/${artwork.slug}/`}
   alternatePath={`/en/artworks/${artwork.slug}/`}

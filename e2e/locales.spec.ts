@@ -5,7 +5,11 @@ test('Hebrew gallery is the default RTL experience', async ({ page }) => {
 
   await expect(page.locator('html')).toHaveAttribute('lang', 'he');
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
-  await expect(page.getByRole('heading', { name: 'Atelier Gallery' })).toBeVisible();
+  await expect(page).toHaveTitle('בין נקודות לפסיפס');
+  await expect(page.getByRole('heading', { name: 'בין נקודות לפסיפס' })).toBeVisible();
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', 'קטלוג ליצירות אומנות בעבודת יד');
+  await expect(page.getByText('קטלוג ליצירות אומנות בעבודת יד')).toBeVisible();
+  await expect(page.getByText('קטלוג דו־לשוני ליצירות אמנות בעבודת יד, עם מסלול בירור אישי לכל יצירה.')).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute('href', '/studio-art-gallery/en/');
   await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://ron-huberfeld.github.io/studio-art-gallery/en/');
   await expect(page.getByRole('link', { name: 'צלחת מנדלה טורקיז' })).toBeVisible();

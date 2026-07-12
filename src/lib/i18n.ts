@@ -2,6 +2,9 @@ export type Locale = 'he' | 'en';
 
 export const locales: Locale[] = ['he', 'en'];
 
+export const siteTitle = 'בין נקודות לפסיפס';
+export const siteDescription = 'קטלוג ליצירות אומנות בעבודת יד';
+
 export const localeMeta: Record<Locale, { label: string; htmlLang: string; dir: 'rtl' | 'ltr' }> = {
   he: { label: 'עברית', htmlLang: 'he', dir: 'rtl' },
   en: { label: 'English', htmlLang: 'en', dir: 'ltr' }
