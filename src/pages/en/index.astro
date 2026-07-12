@@ -3,18 +3,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArtworkCard from '../../components/ArtworkCard.astro';
 import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 import { listArtworks } from '../../lib/artwork';
-import { siteTitle } from '../../lib/i18n';
+import { getSiteTitle } from '../../lib/i18n';
 
 const locale = 'en';
 const artworks = listArtworks();
+const title = getSiteTitle(locale);
 ---
 
-<BaseLayout title={siteTitle} locale={locale} currentPath="/en/" alternatePath="/he/" description="Catalog for handmade artwork">
+<BaseLayout title={title} locale={locale} currentPath="/en/" alternatePath="/he/" description="Catalog for handmade artwork">
   <main>
     <LanguageSwitcher locale={locale} />
     <section class="hero">
       <p class="eyebrow">Warm studio · boutique art</p>
-      <h1>{siteTitle}</h1>
+      <h1>{title}</h1>
       <p>Catalog for handmade artwork</p>
     </section>
 
