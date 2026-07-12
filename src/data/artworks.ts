@@ -44,5 +44,27 @@ export const artworks: Artwork[] = [
       currency: 'ILS',
       showPublicly: true
     }
+  },
+  {
+    id: 'dot-painted-hanging-mirror',
+    slug: 'dot-painted-hanging-mirror',
+    category: 'mirrors',
+    status: 'available',
+    purchaseMode: 'inquire',
+    images: ['/artworks/dot-painted-hanging-mirror.jpg'],
+    title: {
+      he: 'מראה לתליה מצויירת בנקודות',
+      en: 'Dot-Painted Hanging Mirror'
+    },
+    description: {
+      he: 'מראה עגולה לתליה, 25 ס״מ, מצויירת בנקודות סביב המסגרת בדוגמה סימטרית בגווני שחור, ירוק, זהב וחום.',
+      en: 'A 25 cm round hanging mirror with dot-painted decoration around the frame, featuring a symmetrical pattern in black, green, gold, and brown tones.'
+    },
+    colors: ['black', 'green', 'gold', 'brown'],
+    price: {
+      amount: 50,
+      currency: 'ILS',
+      showPublicly: true
+    }
   }
 ];

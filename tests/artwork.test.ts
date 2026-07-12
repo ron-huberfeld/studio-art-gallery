@@ -60,7 +60,8 @@ describe('artwork catalog model', () => {
   it('publishes only real artwork entries and removes placeholder catalog items', () => {
     expect(listArtworks().map((artwork) => artwork.slug)).toEqual([
       'mosaic-covered-guitar',
-      'decorated-dot-pan'
+      'decorated-dot-pan',
+      'dot-painted-hanging-mirror'
     ]);
     expect(getArtworkBySlug('turquoise-mandala-plate')).toBeUndefined();
     expect(getArtworkBySlug('archived-hamsa')).toBeUndefined();
@@ -90,5 +91,20 @@ describe('artwork catalog model', () => {
     });
     expect(getArtworkPriceLabel(guitar!, 'he')).toContain('1,200');
     expect(getArtworkPriceLabel({ ...baseArtwork, price: { amount: 1200, currency: 'ILS', showPublicly: false } }, 'he')).toBeUndefined();
+  });
+
+  it('publishes the dot-painted hanging mirror with user supplied size and public shekel price', () => {
+    const mirror = getArtworkBySlug('dot-painted-hanging-mirror');
+
+    expect(mirror).toMatchObject({
+      category: 'mirrors',
+      title: { he: 'מראה לתליה מצויירת בנקודות', en: 'Dot-Painted Hanging Mirror' },
+      status: 'available',
+      purchaseMode: 'inquire',
+      images: ['/artworks/dot-painted-hanging-mirror.jpg'],
+      price: { amount: 50, currency: 'ILS', showPublicly: true }
+    });
+    expect(mirror?.description?.he).toContain('25 ס״מ');
+    expect(getArtworkPriceLabel(mirror!, 'he')).toContain('50');
   });
 });
