@@ -51,11 +51,19 @@ describe('artwork catalog model', () => {
     expect(getArtworkCta(baseArtwork, 'en')).toEqual({ label: 'Inquire about this artwork', enabled: true });
   });
 
-  it('prevents purchase actions for sold artwork while keeping it visible', () => {
+  it('prevents purchase actions for sold artwork', () => {
     const soldArtwork: Artwork = { ...baseArtwork, status: 'sold', purchaseMode: 'sold' };
 
     expect(getArtworkCta(soldArtwork, 'en')).toEqual({ label: 'Sold', enabled: false });
-    expect(listArtworks()).toContainEqual(expect.objectContaining({ slug: 'turquoise-mandala-plate' }));
+  });
+
+  it('publishes only real artwork entries and removes placeholder catalog items', () => {
+    expect(listArtworks().map((artwork) => artwork.slug)).toEqual([
+      'mosaic-covered-guitar',
+      'decorated-dot-pan'
+    ]);
+    expect(getArtworkBySlug('turquoise-mandala-plate')).toBeUndefined();
+    expect(getArtworkBySlug('archived-hamsa')).toBeUndefined();
   });
 
   it('keeps artwork status authoritative when deriving CTAs and labels', () => {
@@ -68,7 +76,7 @@ describe('artwork catalog model', () => {
   it('builds bilingual artwork routes with Hebrew as the default locale', () => {
     expect(getArtworkRoute(baseArtwork, 'he')).toBe('/he/artworks/sample-plate/');
     expect(getArtworkRoute(baseArtwork, 'en')).toBe('/en/artworks/sample-plate/');
-    expect(getArtworkBySlug('turquoise-mandala-plate')?.title.he).toBe('צלחת מנדלה טורקיז');
+    expect(getArtworkBySlug('decorated-dot-pan')?.title.he).toBe('מחבת מעוטרת בנקודות');
   });
 
   it('publishes the first real artwork with a public shekel price', () => {
