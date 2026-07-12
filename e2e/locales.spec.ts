@@ -29,6 +29,24 @@ test('Hebrew gallery shows the first real artwork and public shekel price', asyn
   );
 });
 
+test('Hebrew gallery shows decorated dot pan artwork and public shekel price', async ({ page }) => {
+  await page.goto('/studio-art-gallery/he/');
+
+  await expect(page.getByRole('link', { name: 'מחבת מעוטרת בנקודות' })).toBeVisible();
+  await expect(page.getByText(/60/)).toBeVisible();
+  await page.getByRole('link', { name: 'מחבת מעוטרת בנקודות' }).click();
+  await expect(page).toHaveURL('/studio-art-gallery/he/artworks/decorated-dot-pan/');
+  await expect(page.getByRole('heading', { name: 'מחבת מעוטרת בנקודות' })).toBeVisible();
+  await expect(page.getByAltText('מחבת מעוטרת בנקודות')).toHaveAttribute(
+    'src',
+    expect.stringContaining('/artworks/decorated-dot-pan.jpg')
+  );
+  await expect(page.getByRole('link', { name: 'בירור לגבי היצירה' })).toHaveAttribute(
+    'href',
+    expect.stringContaining('%D7%9E%D7%97%D7%91%D7%AA%20%D7%9E%D7%A2%D7%95%D7%98%D7%A8%D7%AA%20%D7%91%D7%A0%D7%A7%D7%95%D7%93%D7%95%D7%AA')
+  );
+});
+
 test('English gallery links to artwork detail with inquiry context', async ({ page }) => {
   await page.goto('/studio-art-gallery/en/');
 
