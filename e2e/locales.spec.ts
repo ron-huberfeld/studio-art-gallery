@@ -69,15 +69,19 @@ test('Hebrew gallery shows dot-painted hanging mirror artwork with size and publ
   );
 });
 
-test('English gallery links to real artwork detail with inquiry context', async ({ page }) => {
+test('English gallery uses the translated site title and links to real artwork detail', async ({ page }) => {
   await page.goto('/studio-art-gallery/en/');
 
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.locator('html')).toHaveAttribute('dir', 'ltr');
+  await expect(page).toHaveTitle('Between Dots and Mosaics');
+  await expect(page.getByRole('heading', { name: 'Between Dots and Mosaics' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'בין נקודות לפסיפס' })).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Turquoise Mandala Plate' })).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Archived Hamsa' })).toHaveCount(0);
   await page.getByRole('link', { name: 'Decorated Dot Pan' }).click();
   await expect(page).toHaveURL('/studio-art-gallery/en/artworks/decorated-dot-pan/');
+  await expect(page).toHaveTitle('Decorated Dot Pan · Between Dots and Mosaics');
   await expect(page.getByRole('heading', { name: 'Decorated Dot Pan' })).toBeVisible();
   await expect(page.locator('link[rel="alternate"][hreflang="he"]')).toHaveAttribute('href', 'https://ron-huberfeld.github.io/studio-art-gallery/he/artworks/decorated-dot-pan/');
   await expect(page.getByRole('link', { name: 'Inquire about this artwork' })).toHaveAttribute(

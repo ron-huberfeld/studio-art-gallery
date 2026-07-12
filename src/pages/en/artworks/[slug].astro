@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LanguageSwitcher from '../../../components/LanguageSwitcher.astro';
 import { getArtworkCta, getArtworkDescription, getArtworkPriceLabel, getArtworkStatusLabel, getArtworkTitle, listArtworks } from '../../../lib/artwork';
 import { createInquiryHref } from '../../../lib/inquiry';
-import { siteTitle } from '../../../lib/i18n';
+import { getSiteTitle } from '../../../lib/i18n';
 
 export function getStaticPaths() {
   return listArtworks().map((artwork) => ({ params: { slug: artwork.slug }, props: { artwork } }));
@@ -11,6 +11,7 @@ export function getStaticPaths() {
 
 const locale = 'en';
 const { artwork } = Astro.props;
+const siteTitle = getSiteTitle(locale);
 const title = getArtworkTitle(artwork, locale);
 const description = getArtworkDescription(artwork, locale);
 const cta = getArtworkCta(artwork, locale);
