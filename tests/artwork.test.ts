@@ -62,7 +62,8 @@ describe('artwork catalog model', () => {
       'mosaic-covered-guitar',
       'decorated-dot-pan',
       'dot-painted-hanging-mirror',
-      'floral-tissue-box'
+      'floral-tissue-box',
+      'hand-paper-towel-holder'
     ]);
     expect(getArtworkBySlug('turquoise-mandala-plate')).toBeUndefined();
     expect(getArtworkBySlug('archived-hamsa')).toBeUndefined();
@@ -122,5 +123,20 @@ describe('artwork catalog model', () => {
     });
     expect(tissueBox?.description?.he).toContain('פרחונית');
     expect(getArtworkPriceLabel(tissueBox!, 'he')).toContain('50');
+  });
+
+  it('publishes the hand paper towel holder with public shekel price', () => {
+    const holder = getArtworkBySlug('hand-paper-towel-holder');
+
+    expect(holder).toMatchObject({
+      category: 'other',
+      title: { he: 'מתקן לנייר ידיים', en: 'Hand Paper Towel Holder' },
+      status: 'available',
+      purchaseMode: 'inquire',
+      images: ['/artworks/hand-paper-towel-holder.jpg'],
+      price: { amount: 40, currency: 'ILS', showPublicly: true }
+    });
+    expect(holder?.description?.he).toContain('מתקן לנייר ידיים');
+    expect(getArtworkPriceLabel(holder!, 'he')).toContain('40');
   });
 });

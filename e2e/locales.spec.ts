@@ -87,6 +87,24 @@ test('Hebrew gallery shows floral tissue box artwork and public shekel price', a
   );
 });
 
+test('Hebrew gallery shows hand paper towel holder artwork and public shekel price', async ({ page }) => {
+  await page.goto('/studio-art-gallery/he/');
+
+  await expect(page.getByRole('link', { name: 'מתקן לנייר ידיים' })).toBeVisible();
+  await page.getByRole('link', { name: 'מתקן לנייר ידיים' }).click();
+  await expect(page).toHaveURL('/studio-art-gallery/he/artworks/hand-paper-towel-holder/');
+  await expect(page.getByRole('heading', { name: 'מתקן לנייר ידיים' })).toBeVisible();
+  await expect(page.getByText(/40/)).toBeVisible();
+  await expect(page.getByAltText('מתקן לנייר ידיים')).toHaveAttribute(
+    'src',
+    expect.stringContaining('/artworks/hand-paper-towel-holder.jpg')
+  );
+  await expect(page.getByRole('link', { name: 'בירור לגבי היצירה' })).toHaveAttribute(
+    'href',
+    expect.stringContaining(encodeURIComponent('מתקן לנייר ידיים'))
+  );
+});
+
 test('English gallery uses the translated site title and links to real artwork detail', async ({ page }) => {
   await page.goto('/studio-art-gallery/en/');
 

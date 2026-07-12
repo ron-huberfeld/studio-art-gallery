@@ -88,5 +88,27 @@ export const artworks: Artwork[] = [
       currency: 'ILS',
       showPublicly: true
     }
+  },
+  {
+    id: 'hand-paper-towel-holder',
+    slug: 'hand-paper-towel-holder',
+    category: 'other',
+    status: 'available',
+    purchaseMode: 'inquire',
+    images: ['/artworks/hand-paper-towel-holder.jpg'],
+    title: {
+      he: 'מתקן לנייר ידיים',
+      en: 'Hand Paper Towel Holder'
+    },
+    description: {
+      he: 'מתקן לנייר ידיים עם בסיס עגול כהה, מעוטר בדוגמת נקודות צבעונית סביב המרכז בגווני טורקיז, כתום, צהוב, לבן ואדום.',
+      en: 'A hand paper towel holder with a dark round base, decorated with colorful dot-art patterns around the center in turquoise, orange, yellow, white, and red tones.'
+    },
+    colors: ['black', 'turquoise', 'orange', 'yellow', 'white', 'red'],
+    price: {
+      amount: 40,
+      currency: 'ILS',
+      showPublicly: true
+    }
   }
 ];
