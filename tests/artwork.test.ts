@@ -63,7 +63,8 @@ describe('artwork catalog model', () => {
       'decorated-dot-pan',
       'dot-painted-hanging-mirror',
       'floral-tissue-box',
-      'hand-paper-towel-holder'
+      'hand-paper-towel-holder',
+      'decorated-jewelry-box'
     ]);
     expect(getArtworkBySlug('turquoise-mandala-plate')).toBeUndefined();
     expect(getArtworkBySlug('archived-hamsa')).toBeUndefined();
@@ -138,5 +139,20 @@ describe('artwork catalog model', () => {
     });
     expect(holder?.description?.he).toContain('מתקן לנייר ידיים');
     expect(getArtworkPriceLabel(holder!, 'he')).toContain('40');
+  });
+
+  it('publishes the decorated jewelry box with public shekel price', () => {
+    const jewelryBox = getArtworkBySlug('decorated-jewelry-box');
+
+    expect(jewelryBox).toMatchObject({
+      category: 'boxes',
+      title: { he: 'קופסת תכשיטים מקושטת', en: 'Decorated Jewelry Box' },
+      status: 'available',
+      purchaseMode: 'inquire',
+      images: ['/artworks/decorated-jewelry-box.jpg'],
+      price: { amount: 50, currency: 'ILS', showPublicly: true }
+    });
+    expect(jewelryBox?.description?.he).toContain('קופסת תכשיטים');
+    expect(getArtworkPriceLabel(jewelryBox!, 'he')).toContain('50');
   });
 });

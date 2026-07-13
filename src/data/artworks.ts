@@ -110,5 +110,27 @@ export const artworks: Artwork[] = [
       currency: 'ILS',
       showPublicly: true
     }
+  },
+  {
+    id: 'decorated-jewelry-box',
+    slug: 'decorated-jewelry-box',
+    category: 'boxes',
+    status: 'available',
+    purchaseMode: 'inquire',
+    images: ['/artworks/decorated-jewelry-box.jpg'],
+    title: {
+      he: 'קופסת תכשיטים מקושטת',
+      en: 'Decorated Jewelry Box'
+    },
+    description: {
+      he: 'קופסת תכשיטים מקושטת בעבודת נקודות על רקע זהוב, עם דוגמה סימטרית בגווני טורקיז, ירוק כהה, לבן וחום.',
+      en: 'A decorated jewelry box with dot-art ornamentation on a gold-toned background, featuring a symmetrical pattern in turquoise, deep green, white, and brown.'
+    },
+    colors: ['gold', 'turquoise', 'green', 'white', 'brown'],
+    price: {
+      amount: 50,
+      currency: 'ILS',
+      showPublicly: true
+    }
   }
 ];

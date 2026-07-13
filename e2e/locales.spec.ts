@@ -105,6 +105,24 @@ test('Hebrew gallery shows hand paper towel holder artwork and public shekel pri
   );
 });
 
+test('Hebrew gallery shows decorated jewelry box artwork and public shekel price', async ({ page }) => {
+  await page.goto('/studio-art-gallery/he/');
+
+  await expect(page.getByRole('link', { name: 'קופסת תכשיטים מקושטת' })).toBeVisible();
+  await page.getByRole('link', { name: 'קופסת תכשיטים מקושטת' }).click();
+  await expect(page).toHaveURL('/studio-art-gallery/he/artworks/decorated-jewelry-box/');
+  await expect(page.getByRole('heading', { name: 'קופסת תכשיטים מקושטת' })).toBeVisible();
+  await expect(page.getByText(/50/)).toBeVisible();
+  await expect(page.getByAltText('קופסת תכשיטים מקושטת')).toHaveAttribute(
+    'src',
+    expect.stringContaining('/artworks/decorated-jewelry-box.jpg')
+  );
+  await expect(page.getByRole('link', { name: 'בירור לגבי היצירה' })).toHaveAttribute(
+    'href',
+    expect.stringContaining(encodeURIComponent('קופסת תכשיטים מקושטת'))
+  );
+});
+
 test('English gallery uses the translated site title and links to real artwork detail', async ({ page }) => {
   await page.goto('/studio-art-gallery/en/');
 
