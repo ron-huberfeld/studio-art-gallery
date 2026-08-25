@@ -2,6 +2,23 @@ import type { Artwork } from '../lib/artwork';
 
 export const artworks: Artwork[] = [
   {
+    id: 'dot-painted-floral-guitar',
+    slug: 'dot-painted-floral-guitar',
+    category: 'other',
+    status: 'available',
+    purchaseMode: 'inquire',
+    images: ['/artworks/dot-painted-floral-guitar.jpg'],
+    title: {
+      he: 'גיטרה פרחונית מצוירת בנקודות',
+      en: 'Dot-Painted Floral Guitar'
+    },
+    description: {
+      he: 'גיטרה דקורטיבית מצוירת בעבודת נקודות על רקע עץ כהה, עם דוגמאות פרחוניות צבעוניות בגווני טורקיז, כתום, צהוב, ורוד ולבן. פרטים כמו מידות, חומרים ומחיר יושלמו לאחר איסוף המידע מהאמנית.',
+      en: 'A decorative guitar painted with dot-art ornamentation on a dark wood background, featuring colorful floral patterns in turquoise, orange, yellow, pink, and white. Details such as dimensions, materials, and price will be completed after artist intake.'
+    },
+    colors: ['brown', 'turquoise', 'orange', 'yellow', 'pink', 'white']
+  },
+  {
     id: 'mosaic-covered-guitar',
     slug: 'mosaic-covered-guitar',
     category: 'other',
