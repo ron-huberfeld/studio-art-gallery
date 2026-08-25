@@ -59,6 +59,7 @@ describe('artwork catalog model', () => {
 
   it('publishes only real artwork entries and removes placeholder catalog items', () => {
     expect(listArtworks().map((artwork) => artwork.slug)).toEqual([
+      'dot-painted-floral-guitar',
       'mosaic-covered-guitar',
       'decorated-dot-pan',
       'dot-painted-hanging-mirror',
@@ -83,7 +84,21 @@ describe('artwork catalog model', () => {
     expect(getArtworkBySlug('decorated-dot-pan')?.title.he).toBe('מחבת מעוטרת בנקודות');
   });
 
-  it('publishes the first real artwork with a public shekel price', () => {
+  it('publishes the dot-painted floral guitar from the submitted photo without inventing a public price', () => {
+    const guitar = getArtworkBySlug('dot-painted-floral-guitar');
+
+    expect(guitar).toMatchObject({
+      category: 'other',
+      title: { he: 'גיטרה פרחונית מצוירת בנקודות', en: 'Dot-Painted Floral Guitar' },
+      status: 'available',
+      purchaseMode: 'inquire',
+      images: ['/artworks/dot-painted-floral-guitar.jpg']
+    });
+    expect(guitar?.description?.he).toContain('דוגמאות פרחוניות');
+    expect(getArtworkPriceLabel(guitar!, 'he')).toBeUndefined();
+  });
+
+  it('publishes the mosaic-covered guitar with a public shekel price', () => {
     const guitar = getArtworkBySlug('mosaic-covered-guitar');
 
     expect(guitar).toMatchObject({
